@@ -67,6 +67,7 @@ public class MenusAdapter extends BaseBindingAdapter {
                 if (value == 0) {
                     item.btnMinus.setEnabled(false);
                     item.rlTotalHarga.setVisibility(View.GONE);
+
                 }
 
                 //set to totalHarga
