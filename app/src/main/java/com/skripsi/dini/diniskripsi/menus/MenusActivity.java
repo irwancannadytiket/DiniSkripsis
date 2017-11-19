@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -22,24 +24,52 @@ import java.util.List;
  * Created by irwancannady on 11/10/17.
  */
 
-public class MenusActivity extends AppCompatActivity implements MenusContract.View{
+public class MenusActivity extends AppCompatActivity implements MenusContract.View {
 
     private ActivityMenusBinding mBining;
     private MenusContract.Presenter mPresenter;
     private MenusAdapter mAdapter;
     public static final String NUMBER_TABLE = "number table";
+    private String noMeja;
+    private boolean flagButton = false;
+    private int noTableToOrder;
+    private List<DaftarMenuList> menuLists;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBining = DataBindingUtil.setContentView(this, R.layout.activity_menus);
 
-        String meja = getIntent().getStringExtra(NUMBER_TABLE);
-        Toast.makeText(this, meja, Toast.LENGTH_SHORT).show();
+        setSupportActionBar(mBining.toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        mBining.toolbar.setTitle(R.string.choose_menu);
 
+        noMeja = getIntent().getStringExtra(NUMBER_TABLE);
+        noTableToOrder = Integer.parseInt(noMeja);
         mPresenter = initPresenter();
         mPresenter.bind(this);
         mPresenter.getDataMakanan();
+
+        mBining.btnOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+    }
+
+
+    public static void startToMenu(Activity activity, int numberTable) {
+        Intent intent = new Intent(activity, MenusActivity.class);
+        intent.putExtra(NUMBER_TABLE, String.valueOf(numberTable));
+        activity.startActivity(intent);
+    }
+
+    private void listenForButtonOrder() {
+        if (mAdapter != null) {
+            mAdapter.listenForOrder(true);
+            mBining.btnOrder.setEnabled(true);
+        }
     }
 
     @Override
@@ -50,23 +80,29 @@ public class MenusActivity extends AppCompatActivity implements MenusContract.Vi
 
     @Override
     public void showDataMakanan(List<DaftarMenuList> daftarMenuLists) {
-        if (mAdapter == null){
+        if (mAdapter == null) {
             mAdapter = createAdapter(daftarMenuLists);
         }
-        if (mBining.rvListMenu.getAdapter() == null){
+        if (mBining.rvListMenu.getAdapter() == null) {
             mBining.rvListMenu.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             mBining.rvListMenu.setAdapter(mAdapter);
         }
     }
 
-    private MenusAdapter createAdapter(List<DaftarMenuList> daftarMenuLists){
+    private MenusAdapter createAdapter(List<DaftarMenuList> daftarMenuLists) {
         mAdapter = new MenusAdapter(daftarMenuLists, this);
         return mAdapter;
     }
 
-    public static void startToMenu(Activity activity, int numberTable){
-        Intent intent = new Intent(activity, MenusActivity.class);
-        intent.putExtra(NUMBER_TABLE , String.valueOf(numberTable));
-        activity.startActivity(intent);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            onBackPressed();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
+
 }

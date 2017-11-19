@@ -45,7 +45,7 @@ public class RetrofitHelper {
 
         Gson gson = new GsonBuilder().setLenient().serializeNulls().create();
         return new Retrofit.Builder()
-                .baseUrl("http://192.168.1.102/dashboard/irwan/")
+                .baseUrl("http://192.168.1.101/dashboard/irwanfile/")
                 .client(clientBuilder.build())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))

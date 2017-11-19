@@ -11,6 +11,17 @@ public class DaftarMenuList {
     private String harga;
     private String image;
 
+    private int number = 0;
+
+    public int getNumber() {
+        return number;
+    }
+
+    public int setNumber(int number) {
+        this.number = number;
+        return number;
+    }
+
     public String getId() {
         return id;
     }
