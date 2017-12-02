@@ -93,7 +93,6 @@ public class MenusAdapter extends BaseBindingAdapter {
                 Pesanan pesanan = new Pesanan();
 
                 Pesanan.Order menuList = new Pesanan.Order();
-                List<Pesanan.Order> pesananList = new ArrayList<>();
 
                 menuList.setQty(String.valueOf(value));
                 menuList.setMenu_id(daftarMenuList.getId());

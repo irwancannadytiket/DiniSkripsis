@@ -65,29 +65,4 @@ public class DaftarMenuList {
         this.pesanans = pesanans;
     }
 
-    public static class Pesanan {
-        private String no_meja;
-        private String qty;
-        private String menu_id;
-
-        public void setNo_meja(String no_meja) {
-            this.no_meja = no_meja;
-        }
-
-        public String getQty() {
-            return qty;
-        }
-
-        public void setQty(String qty) {
-            this.qty = qty;
-        }
-
-        public String getMenu_id() {
-            return menu_id;
-        }
-
-        public void setMenu_id(String menu_id) {
-            this.menu_id = menu_id;
-        }
-    }
 }
