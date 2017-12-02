@@ -17,7 +17,9 @@ import com.skripsi.dini.diniskripsi.commons.Injection;
 import com.skripsi.dini.diniskripsi.databinding.ActivityMenusBinding;
 import com.skripsi.dini.diniskripsi.model.DaftarMenuList;
 import com.skripsi.dini.diniskripsi.model.DaftarMenuListResponse;
+import com.skripsi.dini.diniskripsi.model.Pesanan;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,7 +35,7 @@ public class MenusActivity extends AppCompatActivity implements MenusContract.Vi
     private String noMeja;
     private boolean flagButton = false;
     private int noTableToOrder;
-    private List<DaftarMenuList> menuLists;
+    public static List<Pesanan.Order> menuLists;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,18 +60,10 @@ public class MenusActivity extends AppCompatActivity implements MenusContract.Vi
         });
     }
 
-
     public static void startToMenu(Activity activity, int numberTable) {
         Intent intent = new Intent(activity, MenusActivity.class);
         intent.putExtra(NUMBER_TABLE, String.valueOf(numberTable));
         activity.startActivity(intent);
-    }
-
-    private void listenForButtonOrder() {
-        if (mAdapter != null) {
-            mAdapter.listenForOrder(true);
-            mBining.btnOrder.setEnabled(true);
-        }
     }
 
     @Override

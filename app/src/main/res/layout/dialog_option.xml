@@ -59,5 +59,26 @@
             android:layout_below="@+id/ll_content"
             android:background="#b3dddddd" />
 
+        <LinearLayout
+            android:id="@+id/ll_lihat_proses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="Lihat Proses"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/ll_content"
+            android:background="#b3dddddd" />
+
     </LinearLayout>
 </layout>

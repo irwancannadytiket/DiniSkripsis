@@ -18,10 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ChooseOptionActivity" />
-
         <activity android:name=".menus.MenusActivity" />
+        <activity android:name=".ShowStatusActivity"></activity>
     </application>
 
 </manifest>

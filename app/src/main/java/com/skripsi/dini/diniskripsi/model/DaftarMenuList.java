@@ -1,5 +1,7 @@
 package com.skripsi.dini.diniskripsi.model;
 
+import java.util.List;
+
 /**
  * Created by irwancannady on 11/10/17.
  */
@@ -10,6 +12,7 @@ public class DaftarMenuList {
     private String nama_menu;
     private String harga;
     private String image;
+    private List<Pesanan> pesanans;
 
     private int number = 0;
 
@@ -52,5 +55,39 @@ public class DaftarMenuList {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public List<Pesanan> getPesanans() {
+        return pesanans;
+    }
+
+    public void setPesanans(List<Pesanan> pesanans) {
+        this.pesanans = pesanans;
+    }
+
+    public static class Pesanan {
+        private String no_meja;
+        private String qty;
+        private String menu_id;
+
+        public void setNo_meja(String no_meja) {
+            this.no_meja = no_meja;
+        }
+
+        public String getQty() {
+            return qty;
+        }
+
+        public void setQty(String qty) {
+            this.qty = qty;
+        }
+
+        public String getMenu_id() {
+            return menu_id;
+        }
+
+        public void setMenu_id(String menu_id) {
+            this.menu_id = menu_id;
+        }
     }
 }

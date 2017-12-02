@@ -49,6 +49,13 @@ public class ChooseOptionActivity extends AppCompatActivity {
 
             }
         });
+
+        mBinding.llLihatProses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ChooseOptionActivity.this, ShowStatusActivity.class));
+            }
+        });
     }
 
     public static void startToOption(Activity activity, int numberTable){
