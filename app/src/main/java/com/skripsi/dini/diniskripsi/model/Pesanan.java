@@ -1,5 +1,6 @@
 package com.skripsi.dini.diniskripsi.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -27,7 +28,7 @@ public class Pesanan {
         this.no_meja = no_meja;
     }
 
-    public static class Order {
+    public static class Order implements Serializable{
         private String qty;
         private String menu_id;
 
@@ -46,5 +47,7 @@ public class Pesanan {
         public void setMenu_id(String menu_id) {
             this.menu_id = menu_id;
         }
+
+
     }
 }

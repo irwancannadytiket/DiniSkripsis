@@ -57,8 +57,12 @@ public class MenusActivity extends AppCompatActivity implements MenusContract.Vi
         mBining.btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bundle bundle = new Bundle();
                 Intent i = new Intent(MenusActivity.this, ConfirmOrderActivity.class);
+                bundle.putSerializable(ConfirmOrderActivity.HENDRA_B_LIST_UTAMA, mAdapter.getOrderInListFormat());
                 i.putExtra(ConfirmOrderActivity.HENDRA_B_UTAMA, mAdapter.getOrder());
+                //i.putExtra(ConfirmOrderActivity.HENDRA_B_LIST_UTAMA, mAdapter.getOrderInListFormat());
+                i.putExtra("bundle", bundle);
                 startActivity(i);
             }
         });

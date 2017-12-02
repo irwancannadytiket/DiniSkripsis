@@ -25,7 +25,7 @@ import java.util.List;
 public class MenusAdapter extends BaseBindingAdapter {
 
     private List<DaftarMenuList> mDaftarMenu;
-    List<Pesanan.Order> pesananList = new ArrayList<>();
+    ArrayList<Pesanan.Order> pesananList = new ArrayList<>();
     private Context context;
     private boolean isOpen;
     private int value;
@@ -195,5 +195,9 @@ public class MenusAdapter extends BaseBindingAdapter {
 
     public String getOrder() {
         return new Gson().toJson(pesananList);
+    }
+
+    public ArrayList<Pesanan.Order> getOrderInListFormat() {
+        return pesananList;
     }
 }
